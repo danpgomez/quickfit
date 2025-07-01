@@ -56,3 +56,26 @@ footer {
   text-align: center;
   font-size: 0.9rem;
 }
+
+@media print {
+  header,
+  .workout-controls,
+  .search-controls,
+  .search-results,
+  .remove-button,
+  .remove-exercise,
+  .set-log-fields,
+  a {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid black;
+  }
+}
