@@ -1,0 +1,156 @@
+const workoutSelect = document.getElementById("workout-select");
+const addWorkoutBtn = document.getElementById("add-workout-btn");
+const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
+const searchResults = document.getElementById("search-results");
+const workoutView = document.getElementById("workout-view");
+const printBtn = document.getElementById("print-btn");
+
+let workouts = {};
+let currentWorkout = "";
+
+function saveWorkouts() {
+  localStorage.setItem("quickfit-workouts", JSON.stringify(workouts));
+}
+
+function loadWorkouts() {
+  const saved = localStorage.getItem("quickfit-workouts");
+  if (saved) {
+    workouts = JSON.parse(saved);
+    currentWorkout = Object.keys(workouts)[0];
+    renderWorkoutOptions();
+    renderWorkoutView();
+  }
+}
+
+window.addEventListener("DOMContentLoaded", loadWorkouts);
+
+function promptNewWorkout() {
+  const name = prompt("Enter workout name:");
+  if (!name) return;
+  if (workouts[name]) return alert("Workout name already exists.");
+  workouts[name] = [];
+  currentWorkout = name;
+  renderWorkoutOptions();
+  renderWorkoutView();
+  saveWorkouts();
+}
+
+addWorkoutBtn.addEventListener("click", promptNewWorkout);
+printBtn.addEventListener("click", () => window.print());
+
+function renderWorkoutOptions() {
+  workoutSelect.innerHTML = "";
+  Object.keys(workouts).forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    workoutSelect.appendChild(option);
+  });
+  workoutSelect.value = currentWorkout;
+}
+
+workoutSelect.addEventListener("change", (e) => {
+  currentWorkout = e.target.value;
+  renderWorkoutView();
+});
+
+searchBtn.addEventListener("click", () => {
+  const query = searchInput.value.trim();
+  if (!query) return;
+  fetchExercises(query);
+});
+
+async function fetchExercises(query) {
+  searchResults.innerHTML = "Loading...";
+  try {
+    const res = await fetch(`/.netlify/functions/searchExercises?query=${query}`);
+    const data = await res.json();
+    renderSearchResults(data);
+  } catch (err) {
+    console.error("Error fetching exercises:", err);
+    searchResults.innerHTML = "<p>Something went wrong.</p>";
+  }
+}
+
+function renderSearchResults(exercises) {
+  searchResults.innerHTML = "";
+  if (!exercises.length) {
+    searchResults.innerHTML = "<p>No exercises found.</p>";
+    return;
+  }
+
+  exercises.forEach(exercise => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${exercise.gifUrl}" alt="${exercise.name}" />
+      <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(exercise.name)} exercise" target="_blank">
+  ▶️ Search YouTube
+</a>
+      <h3>${exercise.name}</h3>
+      <p><strong>Target:</strong> ${exercise.target}</p>
+      <p><strong>Equipment:</strong> ${exercise.equipment}</p>
+      <p><strong>Instructions:</strong> ${exercise.instructions || 'N/A'}</p>
+      <button class="add-exercise">Add to ${currentWorkout}</button>
+    `;
+
+    const addButton = card.querySelector('.add-exercise');
+    addButton.addEventListener("click", () => {
+      if (!workouts[currentWorkout]) return;
+      workouts[currentWorkout].push(exercise);
+      renderWorkoutView();
+      searchResults.innerHTML = '';
+      searchInput.value = '';
+      saveWorkouts();
+    });
+
+    searchResults.appendChild(card);
+  });
+}
+
+function renderWorkoutView() {
+  const list = workouts[currentWorkout];
+  workoutView.innerHTML = "";
+  if (!list || !list.length) {
+    workoutView.innerHTML = "<p>No exercises yet.</p>";
+    return;
+  }
+
+  list.forEach((exercise, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${exercise.gifUrl}" alt="${exercise.name}" />
+      <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(exercise.name)} exercise" target="_blank">
+        ▶️ Search YouTube</a>
+      <h3>${exercise.name}</h3>
+      <p><strong>Target:</strong> ${exercise.target}</p>
+      <p><strong>Equipment:</strong> ${exercise.equipment}</p>
+      <p><strong>Instructions:</strong> ${exercise.instructions || 'N/A'}</p>
+      <button class="remove-exercise">🗑️ Remove</button>
+    `;
+
+    const setDiv = document.createElement("div");
+    setDiv.innerHTML = `
+    <p><strong>Set:</strong> 
+        <input type="number" placeholder="Reps" style="width:60px;" /> reps @ 
+        <input type="number" placeholder="Weight" style="width:60px;" /> lbs
+    </p>
+    `;
+    card.appendChild(setDiv);
+
+
+    const removeButton = card.querySelector('.remove-exercise');
+    removeButton.addEventListener("click", () => {
+      workouts[currentWorkout].splice(index, 1);
+      renderWorkoutView();
+      saveWorkouts();
+    });
+
+    workoutView.appendChild(card);
+  });
+}
+

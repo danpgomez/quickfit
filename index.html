@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickFit - Workout Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>💪 QuickFit</h1>
+    <button id="print-btn">🖨️ Print</button>
+  </header>
+
+  <section class="workout-controls">
+    <select id="workout-select"></select>
+    <button id="add-workout-btn">➕ New Workout</button>
+  </section>
+
+  <section class="search-controls">
+    <input type="text" id="search-input" placeholder="Search exercises..." />
+    <button id="search-btn">🔍 Search</button>
+  </section>
+
+  <section id="search-results" class="results-grid"></section>
+
+  <section>
+    <h2>Current Workout</h2>
+    <div id="workout-view" class="results-grid"></div>
+  </section>
+
+  <footer>
+    <p>Built with 💚 by Daniel</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
