@@ -74,7 +74,8 @@ workoutSelect.addEventListener('change', (e) => {
 });
 
 searchBtn.addEventListener('click', () => {
-  const query = searchInput.value.trim();
+  const query = searchInput.value.trim().toLowerCase();
+  console.log(query);
   if (!query) return;
   fetchExercises(query);
 });
