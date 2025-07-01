@@ -81,15 +81,16 @@ function renderSearchResults(exercises) {
   exercises.forEach(exercise => {
     const card = document.createElement("div");
     card.className = "card";
+    const exerciseName = capitalize(exercise.name);
 
     card.innerHTML = `
-      <img src="${exercise.gifUrl}" alt="${exercise.name}" />
-      <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(exercise.name)} exercise" target="_blank">
+      <img src="${exercise.gifUrl}" alt="${exerciseName}" />
+      <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(exerciseName)} exercise" target="_blank">
   ▶️ Search YouTube
 </a>
-      <h3>${exercise.name}</h3>
-      <p><strong>Target:</strong> ${exercise.target}</p>
-      <p><strong>Equipment:</strong> ${exercise.equipment}</p>
+      <h3>${exerciseName}</h3>
+      <p><strong>Target:</strong> ${capitalize(exercise.target)}</p>
+      <p><strong>Equipment:</strong> ${capitalize(exercise.equipment)}</p>
       <p><strong>Instructions:</strong> ${exercise.instructions || 'N/A'}</p>
       <button class="add-exercise">Add to ${currentWorkout}</button>
     `;
@@ -119,14 +120,15 @@ function renderWorkoutView() {
   list.forEach((exercise, index) => {
     const card = document.createElement("div");
     card.className = "card";
+    const exerciseName = capitalize(exercise.name);
 
     card.innerHTML = `
-      <img src="${exercise.gifUrl}" alt="${exercise.name}" />
-      <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(exercise.name)} exercise" target="_blank">
+      <img src="${exercise.gifUrl}" alt="${exerciseName}" />
+      <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(exerciseName)} exercise" target="_blank">
         ▶️ Search YouTube</a>
-      <h3>${exercise.name}</h3>
-      <p><strong>Target:</strong> ${exercise.target}</p>
-      <p><strong>Equipment:</strong> ${exercise.equipment}</p>
+      <h3>${exerciseName}</h3>
+      <p><strong>Target:</strong> ${capitalize(exercise.target)}</p>
+      <p><strong>Equipment:</strong> ${capitalize(exercise.equipment)}</p>
       <p><strong>Instructions:</strong> ${exercise.instructions || 'N/A'}</p>
       <button class="remove-exercise">🗑️ Remove</button>
     `;
@@ -152,3 +154,11 @@ function renderWorkoutView() {
   });
 }
 
+function capitalize(str) {
+    const words = str.split(' ');
+    return words.map(word => {
+      const firstChar = word[0].toUpperCase();
+      const restOfWord = word.substring(1);
+      return firstChar + restOfWord;
+    }).join(' ');
+} 
