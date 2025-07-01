@@ -23,9 +23,11 @@ A responsive workout builder that lets you create and view custom workout routin
   - Animated demo GIF
   - Instructions
   - Link to search for exercise on YouTube
-- ➕ Add/remove exercises from a selected workout
+- ➕ Add/remove workouts
+- 💪 Add/remove exercises from a selected workout
 - 📋 Log sets with reps and weight
 - 💾 Automatically saves data using `localStorage`
+- 🖨️ Option to print workouts if desired
 
 ---
 
