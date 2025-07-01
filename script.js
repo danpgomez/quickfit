@@ -4,7 +4,6 @@ const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 const searchResults = document.getElementById("search-results");
 const workoutView = document.getElementById("workout-view");
-const printBtn = document.getElementById("print-btn");
 
 let workouts = {};
 let currentWorkout = "";
@@ -37,7 +36,6 @@ function promptNewWorkout() {
 }
 
 addWorkoutBtn.addEventListener("click", promptNewWorkout);
-printBtn.addEventListener("click", () => window.print());
 
 function renderWorkoutOptions() {
   workoutSelect.innerHTML = "";
