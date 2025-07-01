@@ -1,10 +1,16 @@
 # 💪 QuickFit
 
-**QuickFit** is a responsive, front-end workout builder that lets you create and view custom workout routines using live data from the [ExerciseDB API](https://rapidapi.com/cyberboyanmol/api/exercisedb/). It’s mobile-friendly and gym-ready — perfect for building and printing workouts on the go.
+A responsive workout builder that lets you create and view custom workout routines using data from the [ExerciseDB API](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/). It’s mobile-friendly and gym-ready — perfect for building and performing workouts on the go.
 
-[Live Demo](https://your-netlify-url.netlify.app)  
+[Live Demo](https://quickfit-workout-builder.netlify.app/)  
 
 ---
+
+## 📸 Screenshots
+<div style="display: flex; flex-wrap: wrap; justify-content: center">
+  <img src="./screenshots/quickfit-desktop.png" style="max-width: 500px; height: auto; margin: 5px;">
+  <img src="./screenshots/quickfit-mobile.png" style="max-width: 500px; height: auto; margin: 5px;">
+</div>
 
 ## ✨ Features
 
