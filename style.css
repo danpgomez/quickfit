@@ -27,6 +27,14 @@ input, select {
   font-size: 1rem;
 }
 
+#current-workout {
+  display: none;
+}
+
+#current-workout.active {
+  display: block;
+}
+
 .results-grid {
   display: grid;
   gap: 1rem;

@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QuickFit - Workout Builder</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="https://fav.farm/🏋️" />
-</head>
-<body>
-  <header>
-    <h1>💪 QuickFit</h1>
-    <button id="print-button">🖨️ Print</button>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickFit - Workout Builder</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://fav.farm/🏋️" />
+  </head>
+  <body>
+    <header>
+      <h1>💪 QuickFit</h1>
+      <button id="print-button">🖨️ Print</button>
+    </header>
 
-  <section class="workout-controls">
-    <select id="workout-select"></select>
-    <button id="add-workout-btn">➕ New Workout</button>
-    <button id="remove-workout-btn">Remove Workout</button>
-  </section>
+    <section class="workout-controls">
+      <select id="workout-select"></select>
+      <button id="add-workout-btn">➕ New Workout</button>
+      <button id="remove-workout-btn">Remove Workout</button>
+    </section>
 
-  <section class="search-controls">
-    <input type="text" id="search-input" placeholder="Search exercises..." />
-    <button id="search-btn">🔍 Search</button>
-    <button id="clear-search">❌ Clear Search</button>
-  </section>
+    <section id="current-workout">
+      <h2><span id="workout-title">Current</span> Workout</h2>
+      <section class="search-controls">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search exercises..."
+        />
+        <button id="search-btn">🔍 Search</button>
+        <button id="clear-search">❌ Clear Search</button>
+      </section>
 
-  <section id="search-results" class="results-grid"></section>
-
-  <section>
-    <h2>Current Workout</h2>
-    <div id="workout-view" class="results-grid"></div>
-  </section>
-  <script src="script.js"></script>
-</body>
+      <section id="search-results" class="results-grid"></section>
+      <div id="workout-view" class="results-grid"></div>
+    </section>
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -7,6 +7,8 @@ const clearSearch = document.querySelector('#clear-search');
 const searchResults = document.querySelector('#search-results');
 const workoutView = document.querySelector('#workout-view');
 const printButton = document.querySelector('#print-button');
+const workoutTitle = document.querySelector('#workout-title');
+const currentWorkoutView = document.querySelector('#current-workout');
 
 let workouts = {};
 let currentWorkout = '';
@@ -136,7 +138,15 @@ function renderSearchResults(exercises) {
 
 function renderWorkoutView() {
   const list = workouts[currentWorkout];
+  workoutTitle.innerText = currentWorkout;
   workoutView.innerHTML = '';
+
+  if (currentWorkout) {
+    currentWorkoutView.classList.add('active');
+  } else {
+    currentWorkoutView.classList.remove('active');
+  }
+
   if (!list || !list.length) {
     workoutView.innerHTML = '<p>No exercises yet.</p>';
     return;
