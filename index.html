@@ -6,29 +6,45 @@
     <title>QuickFit - Workout Builder</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="https://fav.farm/🏋️" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
-      <h1>💪 QuickFit</h1>
-      <button id="print-button">🖨️ Print</button>
+      <img src="images/QuickFit-logo-blue.png" alt="Quick Fit logo" id="qf-logo"/>
+      <section class="workout-controls">
+        <select id="workout-select">
+        </select>
+        <button id="add-workout-btn" alt="new workout">
+          <span class="material-icons">add</span>
+        </button>
+        <button id="print-button" alt="print workout">
+          <span class="material-icons">print</span>
+        </button>
+      </section>
     </header>
 
-    <section class="workout-controls">
-      <select id="workout-select"></select>
-      <button id="add-workout-btn">➕ New Workout</button>
-      <button id="remove-workout-btn">Remove Workout</button>
-    </section>
-
     <section id="current-workout">
-      <h2><span id="workout-title">Current</span> Workout</h2>
+      <div class="workout-header">
+        <h2><span id="workout-title">Current</span> Workout</h2>
+        <button id="remove-workout-btn">
+          <span class="material-icons">delete</span>
+        </button>
+      </div>
       <section class="search-controls">
         <input
           type="text"
           id="search-input"
           placeholder="Search exercises..."
         />
-        <button id="search-btn">🔍 Search</button>
-        <button id="clear-search">❌ Clear Search</button>
+        <button id="search-btn">
+          <span class="material-icons">search</span>
+        </button>
+        <button id="clear-search" alt="Clear Search">
+          <span class="material-icons">close</span>
+        </button>
       </section>
 
       <section id="search-results" class="results-grid"></section>
