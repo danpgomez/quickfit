@@ -131,10 +131,10 @@ footer {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   #workout-select,
   #search-input {
-    min-width: 60px;
+    max-width: 50%;
   }
 
   header {
