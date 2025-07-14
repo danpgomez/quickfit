@@ -10,6 +10,7 @@ A responsive workout builder that lets you create and view custom workout routin
 <div style="display: flex; flex-wrap: wrap; justify-content: center">
   <img src="./screenshots/quickfit-desktop.png" style="max-width: 500px; height: auto; margin: 5px;">
   <img src="./screenshots/quickfit-mobile.png" style="max-width: 500px; height: auto; margin: 5px;">
+  <img src="./screenshots/quickfit-mobile-prompt.png" style="max-width: 500px; height: auto; margin: 5px;">
 </div>
 
 ## ✨ Features
