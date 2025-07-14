@@ -13,10 +13,13 @@
   </head>
   <body>
     <header>
-      <img src="images/QuickFit-logo-blue.png" alt="Quick Fit logo" id="qf-logo"/>
+      <img
+        src="images/QuickFit-logo-blue.png"
+        alt="Quick Fit logo"
+        id="qf-logo"
+      />
       <section class="workout-controls">
-        <select id="workout-select">
-        </select>
+        <select id="workout-select"></select>
         <button id="add-workout-btn" alt="new workout">
           <span class="material-icons">add</span>
         </button>
@@ -50,6 +53,17 @@
       <section id="search-results" class="results-grid"></section>
       <div id="workout-view" class="results-grid"></div>
     </section>
+    <div class="workout-prompt-container">
+      <div class="workout-prompt">
+        <h2>Enter workout name:</h2>
+        <input type="text" name="workout-name" id="workout-name-input" placeholder="ie. Full Body"/>
+        <span id="prompt-error-message"></span>
+        <div class="prompt-controls">
+          <button id="cancel-button">Cancel</button>
+          <button type='submit' id="ok-button">Ok</button>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
