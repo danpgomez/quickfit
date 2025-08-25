@@ -2,7 +2,7 @@ const workoutSelect = document.querySelector("#workout-select");
 const addWorkoutBtn = document.querySelector("#add-workout-btn");
 const removeWorkoutBtn = document.querySelector("#remove-workout-btn");
 const searchInput = document.querySelector("#search-input");
-const searchBtn = document.querySelector("#search-btn");
+const searchExerciseForm = document.querySelector(".search-exercises-form");
 const clearSearch = document.querySelector("#clear-search");
 const searchResults = document.querySelector("#search-results");
 const workoutView = document.querySelector("#workout-view");
@@ -11,7 +11,7 @@ const workoutTitle = document.querySelector("#workout-title");
 const currentWorkoutView = document.querySelector("#current-workout");
 const promptContainer = document.querySelector(".workout-prompt-container");
 const workoutNameInput = promptContainer.querySelector("#workout-name-input");
-const okButton = promptContainer.querySelector("#ok-button");
+const workoutPrompt = promptContainer.querySelector(".workout-prompt");
 const cancelButton = promptContainer.querySelector("#cancel-button");
 const promptErrorMsg = promptContainer.querySelector("#prompt-error-message");
 
@@ -40,7 +40,8 @@ cancelButton.addEventListener("click", () => {
   promptContainer.classList.remove("active");
 });
 
-okButton.addEventListener("click", () => {
+workoutPrompt.addEventListener("submit", (e) => {
+  e.preventDefault();
   newWorkoutName = workoutNameInput.value;
 
   if (workouts[newWorkoutName]) {
@@ -59,8 +60,8 @@ okButton.addEventListener("click", () => {
 });
 
 function promptNewWorkout() {
-  let name;
   promptContainer.classList.add("active");
+  workoutNameInput.focus();
 }
 
 function deleteWorkout() {
@@ -100,7 +101,8 @@ workoutSelect.addEventListener("change", (e) => {
   renderWorkoutView();
 });
 
-searchBtn.addEventListener("click", () => {
+searchExerciseForm.addEventListener("submit", (e) => {
+  e.preventDefault();
   const query = searchInput.value.trim().toLowerCase();
   if (!query) return;
   fetchExercises(query);

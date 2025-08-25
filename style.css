@@ -27,6 +27,7 @@ h2 {
   color: #272343;
 }
 
+.search-exercises-form,
 section {
   display: flex;
   gap: 8px;
@@ -147,7 +148,7 @@ footer {
 @media print {
   header,
   .workout-controls,
-  .search-controls,
+  .search-exercises-form,
   .search-results,
   .remove-button,
   .remove-exercise,
