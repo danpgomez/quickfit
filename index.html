@@ -36,33 +36,33 @@
           <span class="material-icons">delete</span>
         </button>
       </div>
-      <section class="search-controls">
+      <form class="search-exercises-form">
         <input
           type="text"
           id="search-input"
           placeholder="Search exercises..."
         />
-        <button id="search-btn">
+        <button id="search-btn" type="submit">
           <span class="material-icons">search</span>
         </button>
-        <button id="clear-search" alt="Clear Search">
+        <button id="clear-search" type="reset" alt="Clear Search">
           <span class="material-icons">close</span>
         </button>
-      </section>
+      </form>
 
       <section id="search-results" class="results-grid"></section>
       <div id="workout-view" class="results-grid"></div>
     </section>
     <div class="workout-prompt-container">
-      <div class="workout-prompt">
+      <form class="workout-prompt" action="">
         <h2>Enter workout name:</h2>
         <input type="text" name="workout-name" id="workout-name-input" placeholder="ie. Full Body"/>
         <span id="prompt-error-message"></span>
         <div class="prompt-controls">
-          <button id="cancel-button">Cancel</button>
-          <button type='submit' id="ok-button">Ok</button>
+          <button type="submit" id="ok-button">Ok</button>
+          <button type="button" id="cancel-button">Cancel</button>
         </div>
-      </div>
+      </form>
     </div>
     <script src="script.js"></script>
   </body>
